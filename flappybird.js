@@ -1,4 +1,3 @@
-
 //board
 let board;
 let boardWidth = 360;
@@ -62,7 +61,7 @@ window.onload = function() {
 
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //every 1.5 seconds
-    document.addEventListener("mouseover", moveBird);
+    document.addEventListener("click", moveBird);
 }
 
 function update() {
@@ -145,8 +144,9 @@ function placePipes() {
     pipeArray.push(bottomPipe);
 }
 
-function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
+function moveBird(e) {  
+	if (e.type === "keydown" && (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") ||
+        e.type === "click") {
         //jump
         velocityY = -6;
 
